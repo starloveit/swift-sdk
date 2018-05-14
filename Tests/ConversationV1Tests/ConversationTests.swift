@@ -96,8 +96,7 @@ class ConversationTests: WatsonTest {
     func instantiateConversation() {
         let username = Credentials.ConversationUsername
         let password = Credentials.ConversationPassword
-        let version = "2018-02-16"
-        conversation = Conversation(username: username, password: password, version: version)
+        conversation = Conversation(username: username, password: password, version: generateDate())
         conversation.defaultHeaders["X-Watson-Learning-Opt-Out"] = "true"
         conversation.defaultHeaders["X-Watson-Test"] = "true"
     }

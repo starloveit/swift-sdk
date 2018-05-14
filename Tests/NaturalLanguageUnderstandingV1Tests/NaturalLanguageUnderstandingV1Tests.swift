@@ -60,7 +60,7 @@ class NaturalLanguageUnderstandingTests: WatsonTest {
     func instantiateNaturalLanguageUnderstanding() {
         let username = Credentials.NaturalLanguageUnderstandingUsername
         let password = Credentials.NaturalLanguageUnderstandingPassword
-        naturalLanguageUnderstanding = NaturalLanguageUnderstanding(username: username, password: password, version: "2016-05-17")
+        naturalLanguageUnderstanding = NaturalLanguageUnderstanding(username: username, password: password, version: generateDate())
         naturalLanguageUnderstanding.defaultHeaders["X-Watson-Learning-Opt-Out"] = "true"
         naturalLanguageUnderstanding.defaultHeaders["X-Watson-Test"] = "true"
     }

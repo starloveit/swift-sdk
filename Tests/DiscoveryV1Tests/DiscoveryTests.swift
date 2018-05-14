@@ -42,8 +42,7 @@ class DiscoveryTests: WatsonTest {
     func instantiateDiscovery() -> Discovery {
         let username = Credentials.DiscoveryUsername
         let password = Credentials.DiscoveryPassword
-        let version = "2017-11-07"
-        let discovery = Discovery(username: username, password: password, version: version)
+        let discovery = Discovery(username: username, password: password, version: generateDate())
         discovery.defaultHeaders["X-Watson-Learning-Opt-Out"] = "true"
         discovery.defaultHeaders["X-Watson-Test"] = "true"
         return discovery

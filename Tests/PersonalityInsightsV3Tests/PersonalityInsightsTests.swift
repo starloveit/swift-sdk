@@ -48,7 +48,7 @@ class PersonalityInsightsTests: WatsonTest {
     func instantiatePersonalityInsights() {
         let username = Credentials.PersonalityInsightsV3Username
         let password = Credentials.PersonalityInsightsV3Password
-        personalityInsights = PersonalityInsights(username: username, password: password, version: "2016-10-20")
+        personalityInsights = PersonalityInsights(username: username, password: password, version: generateDate())
         personalityInsights.defaultHeaders["X-Watson-Learning-Opt-Out"] = "true"
         personalityInsights.defaultHeaders["X-Watson-Test"] = "true"
     }

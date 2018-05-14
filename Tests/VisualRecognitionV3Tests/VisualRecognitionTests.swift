@@ -84,8 +84,7 @@ class VisualRecognitionTests: WatsonTest {
     /** Instantiate Visual Recognition. */
     func instantiateVisualRecognition() {
         let apiKey = Credentials.VisualRecognitionAPIKey
-        let version = "2018-03-19"
-        visualRecognition = VisualRecognition(apiKey: apiKey, version: version)
+        visualRecognition = VisualRecognition(apiKey: apiKey, version: generateDate())
         visualRecognition.defaultHeaders["X-Watson-Learning-Opt-Out"] = "true"
         visualRecognition.defaultHeaders["X-Watson-Test"] = "true"
     }

@@ -63,7 +63,7 @@ class ToneAnalyzerTests: WatsonTest {
     func instantiateToneAnalyzer() {
         let username = Credentials.ToneAnalyzerUsername
         let password = Credentials.ToneAnalyzerPassword
-        toneAnalyzer = ToneAnalyzer(username: username, password: password, version: "2017-09-21")
+        toneAnalyzer = ToneAnalyzer(username: username, password: password, version: generateDate())
         toneAnalyzer.defaultHeaders["X-Watson-Learning-Opt-Out"] = "true"
         toneAnalyzer.defaultHeaders["X-Watson-Test"] = "true"
     }
