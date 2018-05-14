@@ -20,7 +20,7 @@ import XCTest
 import Foundation
 import DiscoveryV1
 
-class DiscoveryTests: XCTestCase {
+class DiscoveryTests: WatsonTest {
 
     private var discovery: Discovery!
     private var environment: Environment!
@@ -233,21 +233,7 @@ class DiscoveryTests: XCTestCase {
         }
         return documentAccepted
     }
-
-    // MARK: - Helper Functions
-
-    func failWithError(error: Error) {
-        XCTFail("Positive test failed with error: \(error)")
-    }
-
-    func failWithResult<T>(result: T) {
-        XCTFail("Negative test returned a result.")
-    }
-
-    func failWithResult() {
-        XCTFail("Negative test returned a result.")
-    }
-
+    
     // MARK: - Environments
 
     func testListEnvironments() {

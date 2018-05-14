@@ -20,7 +20,7 @@ import XCTest
 import Foundation
 import NaturalLanguageUnderstandingV1
 
-class NaturalLanguageUnderstandingTests: XCTestCase {
+class NaturalLanguageUnderstandingTests: WatsonTest {
 
     private var naturalLanguageUnderstanding: NaturalLanguageUnderstanding!
     private let text = "In 2009, Elliot Turner launched AlchemyAPI to process the written word, with all of its quirks and nuances, and got immediate traction."
@@ -77,28 +77,6 @@ class NaturalLanguageUnderstandingTests: XCTestCase {
             let file = URL(fileURLWithPath: "Tests/NaturalLanguageUnderstandingV1Tests/testArticle.html").path
             html = try! String(contentsOfFile: file, encoding: .utf8)
         #endif
-    }
-
-    /** Fail false negatives. */
-    func failWithError(error: Error) {
-        XCTFail("Positive test failed with error: \(error)")
-    }
-
-    /** Fail false positives. */
-    func failWithResult<T>(result: T) {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Fail false positives. */
-    func failWithResult() {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Wait for expectations. */
-    func waitForExpectations(timeout: TimeInterval = 5.0) {
-        waitForExpectations(timeout: timeout) { error in
-            XCTAssertNil(error, "Timeout")
-        }
     }
 
     // MARK: - Positive tests

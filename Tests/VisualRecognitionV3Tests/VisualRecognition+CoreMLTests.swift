@@ -21,7 +21,7 @@
 import XCTest
 import VisualRecognitionV3
 
-class VisualRecognitionCoreMLTests: XCTestCase {
+class VisualRecognitionCoreMLTests: WatsonTest {
 
     private var visualRecognition: VisualRecognition!
     private let timeout: TimeInterval = 30.0
@@ -42,19 +42,7 @@ class VisualRecognitionCoreMLTests: XCTestCase {
         visualRecognition.defaultHeaders["X-Watson-Learning-Opt-Out"] = "true"
         visualRecognition.defaultHeaders["X-Watson-Test"] = "true"
     }
-
-    /** Fail false negatives. */
-    func failWithError(error: Error) {
-        XCTFail("Positive test failed with error: \(error)")
-    }
-
-    /** Wait for expectations. */
-    func waitForExpectations() {
-        waitForExpectations(timeout: timeout) { error in
-            XCTAssertNil(error, "Timeout")
-        }
-    }
-
+    
     /** Test local model file management. */
     func testLocalModelCRUD() {
         if #available(iOS 11.0, *) {

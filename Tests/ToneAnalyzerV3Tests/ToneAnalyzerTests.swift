@@ -20,7 +20,7 @@ import XCTest
 import Foundation
 import ToneAnalyzerV3
 
-class ToneAnalyzerTests: XCTestCase {
+class ToneAnalyzerTests: WatsonTest {
 
     private var toneAnalyzer: ToneAnalyzer!
 
@@ -67,29 +67,7 @@ class ToneAnalyzerTests: XCTestCase {
         toneAnalyzer.defaultHeaders["X-Watson-Learning-Opt-Out"] = "true"
         toneAnalyzer.defaultHeaders["X-Watson-Test"] = "true"
     }
-
-    /** Fail false negatives. */
-    func failWithError(error: Error) {
-        XCTFail("Positive test failed with error: \(error)")
-    }
-
-    /** Fail false positives. */
-    func failWithResult<T>(result: T) {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Fail false positives. */
-    func failWithResult() {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Wait for expectations. */
-    func waitForExpectations(timeout: TimeInterval = 5.0) {
-        waitForExpectations(timeout: timeout) { error in
-            XCTAssertNil(error, "Timeout")
-        }
-    }
-
+    
     // MARK: - Positive Tests
 
     func testGetToneJSON() {

@@ -19,7 +19,7 @@
 import XCTest
 import PersonalityInsightsV3
 
-class PersonalityInsightsTests: XCTestCase {
+class PersonalityInsightsTests: WatsonTest {
 
     private var personalityInsights: PersonalityInsights!
     private var text: String!
@@ -71,28 +71,6 @@ class PersonalityInsightsTests: XCTestCase {
         self.text = load(forResource: "KennedySpeech", ofType: "txt")
         self.html = load(forResource: "KennedySpeech", ofType: "html")
         self.short = load(forResource: "MobyDickIntro", ofType: "txt")
-    }
-
-    /** Fail false negatives. */
-    func failWithError(error: Error) {
-        XCTFail("Positive test failed with error: \(error)")
-    }
-
-    /** Fail false positives. */
-    func failWithResult<T>(result: T) {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Fail false positives. */
-    func failWithResult() {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Wait for expectations. */
-    func waitForExpectations(timeout: TimeInterval = 5.0) {
-        waitForExpectations(timeout: timeout) { error in
-            XCTAssertNil(error, "Timeout")
-        }
     }
 
     // MARK: - Positive Tests

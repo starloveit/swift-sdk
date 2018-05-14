@@ -20,7 +20,7 @@ import XCTest
 import Foundation
 import VisualRecognitionV3
 
-class VisualRecognitionTests: XCTestCase {
+class VisualRecognitionTests: WatsonTest {
 
     private static let timeout: TimeInterval = 45.0
 
@@ -102,29 +102,7 @@ class VisualRecognitionTests: XCTestCase {
         return url
         #endif
     }
-
-    /** Fail false negatives. */
-    func failWithError(error: Error) {
-        XCTFail("Positive test failed with error: \(error)")
-    }
-
-    /** Fail false positives. */
-    func failWithResult<T>(result: T) {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Fail false positives. */
-    func failWithResult() {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Wait for expectations. */
-    func waitForExpectations(timeout: TimeInterval = timeout) {
-        waitForExpectations(timeout: timeout) { error in
-            XCTAssertNil(error, "Timeout")
-        }
-    }
-
+    
     // MARK: - Positive Tests
 
     /** Retrieve a list of user-trained classifiers. */

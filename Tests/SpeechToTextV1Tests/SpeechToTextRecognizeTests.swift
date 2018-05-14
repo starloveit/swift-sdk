@@ -23,7 +23,7 @@ import XCTest
 import Foundation
 import SpeechToTextV1
 
-class SpeechToTextRecognizeTests: XCTestCase {
+class SpeechToTextRecognizeTests: WatsonTest {
 
     private var speechToText: SpeechToText!
     private let timeout: TimeInterval = 10.0
@@ -68,21 +68,7 @@ class SpeechToTextRecognizeTests: XCTestCase {
             ("testTranscribeStreaming", testTranscribeStreaming),
         ]
     }
-
-    // MARK: - Helper Functions
-
-    func failWithError(error: Error) {
-        XCTFail("Positive test failed with error: \(error)")
-    }
-
-    func failWithResult<T>(result: T) {
-        XCTFail("Negative test returned a result.")
-    }
-
-    func failWithResult() {
-        XCTFail("Negative test returned a result.")
-    }
-
+    
     // MARK: - Transcribe File, Default Settings
 
     func testTranscribeFileDefaultWAV() {

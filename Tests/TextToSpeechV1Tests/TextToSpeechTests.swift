@@ -20,7 +20,7 @@ import XCTest
 import Foundation
 import TextToSpeechV1
 
-class TextToSpeechTests: XCTestCase {
+class TextToSpeechTests: WatsonTest {
 
     private var textToSpeech: TextToSpeech!
     private let text = "Swift at IBM is awesome. You should try it!"
@@ -100,29 +100,7 @@ class TextToSpeechTests: XCTestCase {
         }
         waitForExpectations()
     }
-
-    /** Fail false negatives. */
-    func failWithError(error: Error) {
-        XCTFail("Positive test failed with error: \(error)")
-    }
-
-    /** Fail false positives. */
-    func failWithResult<T>(result: T) {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Fail false positives. */
-    func failWithResult() {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Wait for expectations. */
-    func waitForExpectations(timeout: TimeInterval = 5.0) {
-        waitForExpectations(timeout: timeout) { error in
-            XCTAssertNil(error, "Timeout")
-        }
-    }
-
+    
     // MARK: - Positive Tests
 
     func testListVoices() {

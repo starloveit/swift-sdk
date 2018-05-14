@@ -37,6 +37,7 @@
 		12F800581DF71AD9006851D6 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6C7B3C1D8C960300CD97FA /* Credentials.swift */; };
 		12F8005C1DF71BA1006851D6 /* Discovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F8005B1DF71BA1006851D6 /* Discovery.swift */; };
 		12F8005E1DF71BED006851D6 /* DiscoveryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F8005D1DF71BED006851D6 /* DiscoveryTests.swift */; };
+		671C236E20A9BAD700F9CF73 /* WatsonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671C236D20A9BAD700F9CF73 /* WatsonTest.swift */; };
 		6800FC9D2056D76F0078788A /* AssistantV1.h in Headers */ = {isa = PBXBuildFile; fileRef = 6800FC9C2056D7340078788A /* AssistantV1.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6800FC9E2056D8360078788A /* AssistantV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6877FA9A2056D4F100383B25 /* AssistantV1.framework */; };
 		6800FC9F2056D8CB0078788A /* Assistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6800FC552056D6830078788A /* Assistant.swift */; };
@@ -761,6 +762,7 @@
 		12F800481DF71921006851D6 /* DiscoveryV1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiscoveryV1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12F8005B1DF71BA1006851D6 /* Discovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Discovery.swift; sourceTree = "<group>"; };
 		12F8005D1DF71BED006851D6 /* DiscoveryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryTests.swift; sourceTree = "<group>"; };
+		671C236D20A9BAD700F9CF73 /* WatsonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatsonTest.swift; sourceTree = "<group>"; };
 		6800FC1F2056D6830078788A /* UpdateDialogNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateDialogNode.swift; sourceTree = "<group>"; };
 		6800FC202056D6830078788A /* LogExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogExport.swift; sourceTree = "<group>"; };
 		6800FC212056D6830078788A /* DialogNodeAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogNodeAction.swift; sourceTree = "<group>"; };
@@ -1653,6 +1655,7 @@
 			children = (
 				68B213ED1F8429880052DC00 /* CodableExtensionsTests.swift */,
 				68B213EE1F8429890052DC00 /* JSONValueTests.swift */,
+				671C236D20A9BAD700F9CF73 /* WatsonTest.swift */,
 			);
 			name = Tests;
 			path = ../../Tests/RestKitTests;
@@ -3761,6 +3764,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6800FCD62056D8EC0078788A /* AssistantTests.swift in Sources */,
+				671C236E20A9BAD700F9CF73 /* WatsonTest.swift in Sources */,
 				6877FAA02056D4F500383B25 /* Credentials.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

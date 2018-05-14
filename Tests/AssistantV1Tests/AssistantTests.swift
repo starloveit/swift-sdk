@@ -20,7 +20,7 @@ import XCTest
 import Foundation
 import AssistantV1
 
-class AssistantTests: XCTestCase {
+class AssistantTests: WatsonTest {
 
     private var assistant: Assistant!
     private let workspaceID = Credentials.AssistantWorkspace
@@ -96,32 +96,9 @@ class AssistantTests: XCTestCase {
     func instantiateAssistant() {
         let username = Credentials.AssistantUsername
         let password = Credentials.AssistantPassword
-        let version = "2018-02-16"
-        assistant = Assistant(username: username, password: password, version: version)
+        assistant = Assistant(username: username, password: password, version: generateDate())
         assistant.defaultHeaders["X-Watson-Learning-Opt-Out"] = "true"
         assistant.defaultHeaders["X-Watson-Test"] = "true"
-    }
-
-    /** Fail false negatives. */
-    func failWithError(error: Error) {
-        XCTFail("Positive test failed with error: \(error)")
-    }
-
-    /** Fail false positives. */
-    func failWithResult<T>(result: T) {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Fail false positives. */
-    func failWithResult() {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Wait for expectations. */
-    func waitForExpectations(timeout: TimeInterval = 10.0) {
-        waitForExpectations(timeout: timeout) { error in
-            XCTAssertNil(error, "Timeout")
-        }
     }
 
     // MARK: - Positive Tests

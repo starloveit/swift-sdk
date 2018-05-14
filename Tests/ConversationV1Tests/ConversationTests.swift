@@ -20,7 +20,7 @@ import XCTest
 import Foundation
 import ConversationV1
 
-class ConversationTests: XCTestCase {
+class ConversationTests: WatsonTest {
 
     private var conversation: Conversation!
     private let workspaceID = Credentials.ConversationWorkspace
@@ -101,29 +101,7 @@ class ConversationTests: XCTestCase {
         conversation.defaultHeaders["X-Watson-Learning-Opt-Out"] = "true"
         conversation.defaultHeaders["X-Watson-Test"] = "true"
     }
-
-    /** Fail false negatives. */
-    func failWithError(error: Error) {
-        XCTFail("Positive test failed with error: \(error)")
-    }
-
-    /** Fail false positives. */
-    func failWithResult<T>(result: T) {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Fail false positives. */
-    func failWithResult() {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Wait for expectations. */
-    func waitForExpectations(timeout: TimeInterval = 10.0) {
-        waitForExpectations(timeout: timeout) { error in
-            XCTAssertNil(error, "Timeout")
-        }
-    }
-
+    
     // MARK: - Positive Tests
 
     func testMessage() {

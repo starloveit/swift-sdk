@@ -20,7 +20,7 @@ import XCTest
 import Foundation
 import NaturalLanguageClassifierV1
 
-class NaturalLanguageClassifierTests: XCTestCase {
+class NaturalLanguageClassifierTests: WatsonTest {
 
     // Several tests depend upon an already-trained classifier. If the classifier does not exist then use the
     // API Explorer (watson-api-explorer.mybluemix.net) to create a classifier using the `trained_meta.txt`
@@ -69,29 +69,7 @@ class NaturalLanguageClassifierTests: XCTestCase {
         naturalLanguageClassifier.defaultHeaders["X-Watson-Learning-Opt-Out"] = "true"
         naturalLanguageClassifier.defaultHeaders["X-Watson-Test"] = "true"
     }
-
-    /** Fail false negatives. */
-    func failWithError(error: Error) {
-        XCTFail("Positive test failed with error: \(error)")
-    }
-
-    /** Fail false positives. */
-    func failWithResult<T>(result: T) {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Fail false positives. */
-    func failWithResult() {
-        XCTFail("Negative test returned a result.")
-    }
-
-    /** Wait for expectations. */
-    func waitForExpectations(timeout: TimeInterval = 20.0) {
-        waitForExpectations(timeout: timeout) { error in
-            XCTAssertNil(error, "Timeout")
-        }
-    }
-
+    
     // MARK: - Helper Functions
 
     func loadClassifierFiles() {

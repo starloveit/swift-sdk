@@ -23,7 +23,7 @@ import Foundation
 import UIKit
 import VisualRecognitionV3
 
-class VisualRecognitionUIImageTests: XCTestCase {
+class VisualRecognitionUIImageTests: WatsonTest {
 
     private var visualRecognition: VisualRecognition!
 
@@ -52,17 +52,7 @@ class VisualRecognitionUIImageTests: XCTestCase {
         visualRecognition.defaultHeaders["X-Watson-Learning-Opt-Out"] = "true"
         visualRecognition.defaultHeaders["X-Watson-Test"] = "true"
     }
-
-    func failWithError(error: Error) {
-        XCTFail("Positive test failed with error: \(error)")
-    }
-
-    func waitForExpectations(timeout: TimeInterval = 15.0) {
-        waitForExpectations(timeout: timeout) { error in
-            XCTAssertNil(error, "Timeout")
-        }
-    }
-
+    
     func testClassifyUIImage() {
         let expectation = self.expectation(description: "Classify a UIImage using the default classifier.")
         visualRecognition.classify(image: car, failure: failWithError) {

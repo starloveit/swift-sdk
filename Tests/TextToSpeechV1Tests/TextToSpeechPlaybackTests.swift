@@ -21,7 +21,7 @@ import XCTest
 import TextToSpeechV1
 import AVFoundation
 
-class TextToSpeechPlaybackTests: XCTestCase {
+class TextToSpeechPlaybackTests: WatsonTest {
 
     private var textToSpeech: TextToSpeech!
     private let playAudio = true
@@ -47,19 +47,7 @@ class TextToSpeechPlaybackTests: XCTestCase {
         textToSpeech.defaultHeaders["X-Watson-Learning-Opt-Out"] = "true"
         textToSpeech.defaultHeaders["X-Watson-Test"] = "true"
     }
-
-    /** Fail false negatives. */
-    func failWithError(error: Error) {
-        XCTFail("Positive test failed with error: \(error)")
-    }
-
-    /** Wait for expectations. */
-    func waitForExpectations(timeout: TimeInterval = 10.0) {
-        waitForExpectations(timeout: timeout) { error in
-            XCTAssertNil(error, "Timeout")
-        }
-    }
-
+    
     // MARK: - Positive Tests
 
     /** Synthesize text to spoken audio using the default parameters. */
