@@ -16,6 +16,7 @@
 
 import XCTest
 import Foundation
+import SpeechToTextV1
 
 class WatsonTest: XCTestCase {
     
@@ -46,6 +47,62 @@ class WatsonTest: XCTestCase {
     func waitForExpectations(timeout: TimeInterval = 10.0) {
         waitForExpectations(timeout: timeout) { error in
             XCTAssertNil(error, "Timeout")
+        }
+    }
+    
+    // MARK: - Wait Functions
+    
+    func waitUntil(condition: () -> Bool) {
+        let sleepTime: UInt32 = 5
+        let maxRetries = 5
+        for retry in 1 ... maxRetries {
+            if !condition() && retry < maxRetries {
+                sleep(sleepTime)
+            } else {
+                break
+            }
+        }
+    }
+    
+    func waitUntil(_ languageModel: LanguageModel, is status: String) {
+        waitUntil {
+            var hasDesiredStatus = false
+            let expectation = self.expectation(description: "getLanguageModel")
+            let failure = { (error: Error) in if !error.localizedDescription.contains("locked") { XCTFail(error.localizedDescription) }}
+            speechToText.getLanguageModel(customizationID: languageModel.customizationID, failure: failure) { model in
+                hasDesiredStatus = (model.status == status)
+                expectation.fulfill()
+            }
+            wait(for: [expectation], timeout: timeout)
+            return hasDesiredStatus
+        }
+    }
+    
+    func waitUntil(_ acousticModel: AcousticModel, is status: String) {
+        waitUntil {
+            var hasDesiredStatus = false
+            let expectation = self.expectation(description: "getAcousticModel")
+            let failure = { (error: Error) in if !error.localizedDescription.contains("locked") { XCTFail(error.localizedDescription) }}
+            speechToText.getAcousticModel(customizationID: acousticModel.customizationID, failure: failure) { model in
+                hasDesiredStatus = (model.status == status)
+                expectation.fulfill()
+            }
+            wait(for: [expectation], timeout: timeout)
+            return hasDesiredStatus
+        }
+    }
+    
+    func waitUntil(_ corpus: String, is status: String, languageModel: LanguageModel) {
+        waitUntil {
+            var hasDesiredStatus = false
+            let expectation = self.expectation(description: "getCorpus")
+            let failure = { (error: Error) in if !error.localizedDescription.contains("locked") { XCTFail(error.localizedDescription) }}
+            speechToText.getCorpus(customizationID: languageModel.customizationID, corpusName: corpus, failure: failure) { corpus in
+                hasDesiredStatus = (corpus.status == status)
+                expectation.fulfill()
+            }
+            wait(for: [expectation], timeout: timeout)
+            return hasDesiredStatus
         }
     }
     
